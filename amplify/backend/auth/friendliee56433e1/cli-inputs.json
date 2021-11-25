@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "friendlie71ed3f8b_identitypool_71ed3f8b",
+    "identityPoolName": "friendliee56433e1_identitypool_e56433e1",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "friend71ed3f8b",
-    "userPoolName": "friendlie71ed3f8b_userpool_71ed3f8b",
+    "resourceNameTruncated": "friende56433e1",
+    "userPoolName": "friendliee56433e1_userpool_e56433e1",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,14 +31,14 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "friend71ed3f8b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "friende56433e1_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "71ed3f8b",
-    "resourceName": "friendlie71ed3f8b",
+    "sharedId": "e56433e1",
+    "resourceName": "friendliee56433e1",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
-      "email, phone_number"
+      "email"
     ],
     "userPoolGroupList": [],
     "serviceName": "Cognito",

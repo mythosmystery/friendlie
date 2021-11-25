@@ -1,10 +1,7 @@
-type User @model @auth(rules: [{ allow: owner }]) {
-   id: ID! @primaryKey
+type User @model @auth(rules: [{ allow: owner, ownerField: "owner" }]) {
+   id: ID!
    name: String!
-   email: AWSEmail
    age: Int!
-   bio: String
+   bio: String!
    likes: [User] @hasMany
-   matches: [User] @hasMany
 }
- 

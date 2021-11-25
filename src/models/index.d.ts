@@ -10,8 +10,8 @@ type UserMetaData = {
 
 export declare class User {
   readonly id: string;
+  readonly authId: string;
   readonly name: string;
-  readonly email?: string;
   readonly age: number;
   readonly bio?: string;
   readonly likes?: (User | null)[];

@@ -10,18 +10,18 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
+                "authId": {
+                    "name": "authId",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
-                "email": {
-                    "name": "email",
+                "name": {
+                    "name": "name",
                     "isArray": false,
-                    "type": "AWSEmail",
-                    "isRequired": false,
+                    "type": "String",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "age": {
@@ -136,5 +136,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "5fcaf2cf9c254b7a01285e1b61eca0af"
+    "version": "e07dd27b2072a278b8aa474ccaf0d84e"
 };

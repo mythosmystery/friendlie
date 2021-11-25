@@ -7,54 +7,24 @@ export const onCreateUser = /* GraphQL */ `
     onCreateUser(owner: $owner) {
       id
       name
-      email
       age
       bio
       likes {
         items {
           id
           name
-          email
           age
           bio
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userLikesId
-          userMatchesId
           owner
         }
         nextToken
-        startedAt
-      }
-      matches {
-        items {
-          id
-          name
-          email
-          age
-          bio
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          userLikesId
-          userMatchesId
-          owner
-        }
-        nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userLikesId
-      userMatchesId
       owner
     }
   }
@@ -64,54 +34,24 @@ export const onUpdateUser = /* GraphQL */ `
     onUpdateUser(owner: $owner) {
       id
       name
-      email
       age
       bio
       likes {
         items {
           id
           name
-          email
           age
           bio
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userLikesId
-          userMatchesId
           owner
         }
         nextToken
-        startedAt
-      }
-      matches {
-        items {
-          id
-          name
-          email
-          age
-          bio
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          userLikesId
-          userMatchesId
-          owner
-        }
-        nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userLikesId
-      userMatchesId
       owner
     }
   }
@@ -121,54 +61,24 @@ export const onDeleteUser = /* GraphQL */ `
     onDeleteUser(owner: $owner) {
       id
       name
-      email
       age
       bio
       likes {
         items {
           id
           name
-          email
           age
           bio
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           userLikesId
-          userMatchesId
           owner
         }
         nextToken
-        startedAt
-      }
-      matches {
-        items {
-          id
-          name
-          email
-          age
-          bio
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          userLikesId
-          userMatchesId
-          owner
-        }
-        nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       userLikesId
-      userMatchesId
       owner
     }
   }
