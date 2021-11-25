@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "friendlie",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/tmp/amplify-d5a9dea7-8e41-403c-8f40-1463cb2362e9/amplify/backend/api/friendlie/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authfriendlie71ed3f8b"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "keyDescription": "api key description",
+        "expirationTime": 30
+      },
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
+  }
+}
