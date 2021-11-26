@@ -1,27 +1,24 @@
 {
-  "private": true,
+  "name": "friendlie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "install": "cd client && npm i",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\""
   },
-  "dependencies": {
-    "@aws-amplify/ui-react": "^2.1.1",
-    "aws-amplify": "^4.3.8",
-    "formik": "^2.2.9",
-    "framer-motion": "^5.3.3",
-    "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "tailwind-scrollbar-hide": "^1.1.6"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mythosmystery/friendlie.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mythosmystery/friendlie/issues"
+  },
+  "homepage": "https://github.com/mythosmystery/friendlie#readme",
   "devDependencies": {
-    "@types/node": "^16.11.10",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4",
-    "typescript": "^4.5.2"
+    "concurrently": "^6.4.0"
   }
 }

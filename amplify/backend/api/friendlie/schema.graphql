@@ -1,7 +1,0 @@
-type User @model @auth(rules: [{ allow: owner, ownerField: "owner" }]) {
-   id: ID!
-   name: String!
-   age: Int!
-   bio: String!
-   likes: [User] @hasMany
-}
