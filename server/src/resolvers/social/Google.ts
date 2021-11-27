@@ -3,7 +3,7 @@ import { Auth } from '../../lib/types/AuthGQL';
 import { OAuth2Client } from 'google-auth-library';
 import { User } from '../../entity/User';
 import { sign } from 'jsonwebtoken';
-import { __secret__ } from '../../lib/constants';
+import { __secret__ } from '../../lib/utils/constants';
 
 const client = new OAuth2Client(process.env.CLIENT_ID);
 

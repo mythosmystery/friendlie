@@ -3,7 +3,7 @@ import { hash } from 'bcryptjs';
 import { User } from '../../entity/User';
 import { sign } from 'jsonwebtoken';
 import { Auth } from '../../lib/types/AuthGQL';
-import { __secret__ } from '../../lib/constants';
+import { __secret__ } from '../../lib/utils/constants';
 
 @Resolver()
 export class RegisterResolver {

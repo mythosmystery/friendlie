@@ -1,6 +1,6 @@
 import { User } from '../../entity/User';
 import { Ctx, Query, Resolver, UseMiddleware } from 'type-graphql';
-import { isAuth } from '../../lib/isAuth';
+import { isAuth } from '../../lib/utils/isAuth';
 import { MyContext } from '../../lib/types/MyContext';
 
 @Resolver()
