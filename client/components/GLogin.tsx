@@ -13,7 +13,9 @@ export const GLogin: React.FC<GLoginProps> = ({}) => {
 
    const onSuccess = async (res: any) => {
       try {
-         const { data } = await googleSignIn({ variables: { tokenId: res.tokenId } });
+         const { data } = await googleSignIn({
+            variables: { tokenId: res.tokenId }
+         });
          if (data?.googleSignIn?.token) {
             signIn(data.googleSignIn.token);
          }
