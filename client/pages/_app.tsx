@@ -1,14 +1,12 @@
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { FC } from 'react';
-import '../lib/globals.css';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import 'tailwindcss/tailwind.css';
+import { AuthProvider } from '../lib/providers/auth';
+import { ThemeProvider } from '../lib/providers/theme';
+import Layout from '../components/layout';
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
-   const client = new ApolloClient({
-      uri: 'http://localhost:3001/graphql',
-      cache: new InMemoryCache()
-   });
    return (
       <>
          <Head>
@@ -17,9 +15,13 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                rel='stylesheet'
             />
          </Head>
-         <ApolloProvider client={client}>
-            <Component {...pageProps} />
-         </ApolloProvider>
+         <AuthProvider>
+            <ThemeProvider>
+               <Layout>
+                  <Component {...pageProps} />
+               </Layout>
+            </ThemeProvider>
+         </AuthProvider>
       </>
    );
 };
