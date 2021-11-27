@@ -5,7 +5,7 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 const Layout: React.FC = ({ children }) => {
    const { dark, toggleDark } = useTheme();
    return (
-      <div className='absolute w-screen min-h-screen py-2 overflow-y-auto overflow-x-hidden scrollbar-hide'>
+      <div className='w-screen min-h-screen py-2 overflow-y-auto overflow-x-hidden scrollbar-hide'>
          {children}
          <button
             className='fixed top-2 left-2 p-2.5 dark:text-black text-foreground text-xl bg-background dark:bg-foreground rounded-full shadow-md'

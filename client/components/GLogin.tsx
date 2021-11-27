@@ -1,5 +1,5 @@
 import React from 'react';
-import { refreshTokenSetup } from '../lib/refreshToken';
+import { refreshTokenSetup } from '../lib/utils/refreshToken';
 import { GoogleLogin } from 'react-google-login';
 import { useGoogleSignInMutation } from '../generated/graphql';
 import { useAuth } from '../lib/providers/auth';
