@@ -2,8 +2,13 @@ import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { FC } from 'react';
 import '../lib/globals.css';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
+   const client = new ApolloClient({
+      uri: 'http://localhost:3001/graphql',
+      cache: new InMemoryCache()
+   });
    return (
       <>
          <Head>
@@ -12,7 +17,9 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                rel='stylesheet'
             />
          </Head>
-         <Component {...pageProps} />
+         <ApolloProvider client={client}>
+            <Component {...pageProps} />
+         </ApolloProvider>
       </>
    );
 };

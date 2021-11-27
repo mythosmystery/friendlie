@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import dotenv from 'dotenv';
 
 import { ApolloServer } from 'apollo-server-express';
 import Express from 'express';
@@ -11,12 +12,15 @@ import { MeResolver } from './resolvers/user/Me';
 import { LoginResolver } from './resolvers/user/Login';
 import { RegisterResolver } from './resolvers/user/Register';
 import { GetUserResolver } from './resolvers/user/Get';
+import { GoogleResolver } from './resolvers/social/Google';
+
+dotenv.config();
 
 const main = async () => {
    await createDB();
 
    const schema = await buildSchema({
-      resolvers: [HelloResolver, MeResolver, LoginResolver, RegisterResolver, GetUserResolver]
+      resolvers: [HelloResolver, MeResolver, LoginResolver, RegisterResolver, GetUserResolver, GoogleResolver]
    });
 
    const app = Express();
