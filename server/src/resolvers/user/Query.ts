@@ -12,13 +12,13 @@ export class UserQueryResolver {
       if (!payload?.userId) {
          throw new Error('Not logged in');
       }
-      return User.findOne(payload.userId);
+      return User.findOne(payload.userId, { relations: ['likes', 'likedBy', 'profile', 'profile.user'] });
    }
 
    //get all users
    @Query(() => [User])
    async getUsers(): Promise<User[]> {
-      return await User.find({ relations: ['likes', 'likedBy'] });
+      return await User.find({ relations: ['likes', 'likedBy', 'profile', 'profile.user'] });
    }
 
    //get one user by id
