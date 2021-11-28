@@ -46,6 +46,18 @@ export type MutationRegisterArgs = {
   password: Scalars['String'];
 };
 
+export type Profile = {
+  __typename?: 'Profile';
+  age: Scalars['Float'];
+  bio: Scalars['String'];
+  gender: Scalars['String'];
+  id: Scalars['ID'];
+  interests: Array<Scalars['String']>;
+  intro: Scalars['String'];
+  picture: Scalars['String'];
+  user: User;
+};
+
 export type Query = {
   __typename?: 'Query';
   getUser: User;
@@ -62,8 +74,13 @@ export type QueryGetUserArgs = {
 export type User = {
   __typename?: 'User';
   email: Scalars['String'];
+  googlePicture?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+  likedBy?: Maybe<Array<User>>;
+  likes?: Maybe<Array<User>>;
+  matches?: Maybe<Array<User>>;
   name: Scalars['String'];
+  profile?: Maybe<Profile>;
 };
 
 export type GoogleSignInMutationVariables = Exact<{
@@ -76,7 +93,7 @@ export type GoogleSignInMutation = { __typename?: 'Mutation', googleSignIn?: { _
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, name: string, email: string } | null | undefined };
+export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, name: string, email: string, googlePicture?: string | null | undefined } | null | undefined };
 
 
 export const GoogleSignInDocument = gql`
@@ -123,6 +140,7 @@ export const MeDocument = gql`
     id
     name
     email
+    googlePicture
   }
 }
     `;

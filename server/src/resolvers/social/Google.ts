@@ -18,17 +18,21 @@ export class GoogleResolver {
 
       const payload = ticket.getPayload();
 
-      const user = await User.findOne({ where: { email: payload?.email } });
-
-      if (!user) {
-         const createdUser = await User.create({
+      await User.upsert(
+         {
             name: payload?.name,
             email: payload?.email,
-            password: payload?.sub
-         }).save();
-         return { token: sign({ userId: createdUser.id }, __secret__, { expiresIn: '15m' }), user: createdUser };
+            password: payload?.sub,
+            googlePicture: payload?.picture
+         },
+         { conflictPaths: ['email'] }
+      );
+      try {
+         const user = await User.findOneOrFail({ where: { email: payload?.email } });
+         return { token: sign({ userId: user.id }, __secret__, { expiresIn: '15m' }), user };
+      } catch (err) {
+         console.log(err);
+         throw new Error('error upserting user');
       }
-
-      return { token: sign({ userId: user?.id }, __secret__, { expiresIn: '15m' }), user };
    }
 }

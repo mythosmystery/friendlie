@@ -31,7 +31,7 @@ export class Profile extends BaseEntity {
 
    @Field(() => [String])
    @Column('text', { array: true })
-   interests?: string[];
+   interests: string[];
 
    @Field(() => User)
    @OneToOne(() => User, user => user.profile)

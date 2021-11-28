@@ -8,10 +8,8 @@ import { MyContext } from './lib/types/MyContext';
 import { __dev_db__, __prod__ } from './lib/utils/constants';
 import { createDB } from './lib/utils/createDB';
 import HelloResolver from './resolvers/Hello';
-import { MeResolver } from './resolvers/user/Me';
-import { LoginResolver } from './resolvers/user/Login';
-import { RegisterResolver } from './resolvers/user/Register';
-import { GetUserResolver } from './resolvers/user/Get';
+import { UserMutationResolver } from './resolvers/user/Mutation';
+import { UserQueryResolver } from './resolvers/user/Query';
 import { GoogleResolver } from './resolvers/social/Google';
 
 dotenv.config();
@@ -20,7 +18,7 @@ const main = async () => {
    await createDB();
 
    const schema = await buildSchema({
-      resolvers: [HelloResolver, MeResolver, LoginResolver, RegisterResolver, GetUserResolver, GoogleResolver]
+      resolvers: [HelloResolver, UserMutationResolver, UserQueryResolver, GoogleResolver]
    });
 
    const app = Express();
