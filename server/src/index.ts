@@ -12,6 +12,7 @@ import { UserMutationResolver } from './resolvers/user/Mutation';
 import { UserQueryResolver } from './resolvers/user/Query';
 import { GoogleResolver } from './resolvers/social/Google';
 import { ProfileResolver } from './resolvers/profile/Profile';
+import { ConnectionResolver } from './resolvers/connection/Connection';
 
 dotenv.config();
 
@@ -19,7 +20,14 @@ const main = async () => {
    await createDB();
 
    const schema = await buildSchema({
-      resolvers: [HelloResolver, UserMutationResolver, UserQueryResolver, GoogleResolver, ProfileResolver]
+      resolvers: [
+         HelloResolver,
+         UserMutationResolver,
+         UserQueryResolver,
+         GoogleResolver,
+         ProfileResolver,
+         ConnectionResolver
+      ]
    });
 
    const app = Express();
