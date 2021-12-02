@@ -1,11 +1,8 @@
 import Head from 'next/head';
 import { FC } from 'react';
 import { GLogin } from '../components/GLogin';
-import { GLogout } from '../components/GLogout';
-import { useMeQuery } from '../generated/graphql';
 
 const Home: FC = () => {
-   const { data, loading } = useMeQuery();
    return (
       <>
          <Head>
@@ -16,9 +13,7 @@ const Home: FC = () => {
             Welcome to <span className='font-bold text-brand'>Friendlie!</span>
          </h1>
          <div className='w-full h-full break-words flex flex-col justify-center items-center'>
-            {data?.me ? <GLogout /> : <GLogin />}
-            {loading ? <h1>Loading...</h1> : <pre>{JSON.stringify(data?.me, null, 2)}</pre>}
-            {data?.me?.googlePicture ? <img src={data.me.googlePicture} className='rounded-full' /> : null}
+            <GLogin />
          </div>
       </>
    );

@@ -3,13 +3,17 @@ import { refreshTokenSetup } from '../lib/utils/refreshToken';
 import { GoogleLogin } from 'react-google-login';
 import { useGoogleSignInMutation } from '../generated/graphql';
 import { useAuth } from '../lib/providers/auth';
+import { useRouter } from 'next/dist/client/router';
 
-interface GLoginProps {}
+interface GLoginProps {
+   path?: string;
+}
 
-export const GLogin: React.FC<GLoginProps> = ({}) => {
+export const GLogin: React.FC<GLoginProps> = ({ path = '' }) => {
    const clientId = '752888393960-3nnuptkknken7d0c8663lt85jdg3j7ms.apps.googleusercontent.com';
    const [googleSignIn] = useGoogleSignInMutation();
    const { signIn } = useAuth();
+   const router = useRouter();
 
    const onSuccess = async (res: any) => {
       try {
@@ -18,6 +22,7 @@ export const GLogin: React.FC<GLoginProps> = ({}) => {
          });
          if (data?.googleSignIn?.token) {
             signIn(data.googleSignIn.token);
+            router.push(path);
          }
       } catch (err) {
          console.log(err);
