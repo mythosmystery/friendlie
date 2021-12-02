@@ -15,7 +15,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                rel='stylesheet'
             />
          </Head>
-         <AuthProvider>
+         <AuthProvider initialState={pageProps.initialState}>
             <ThemeProvider>
                <Layout>
                   <Component {...pageProps} />

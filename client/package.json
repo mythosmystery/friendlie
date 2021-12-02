@@ -12,6 +12,7 @@
     "@graphql-codegen/typescript": "^2.4.1",
     "@graphql-codegen/typescript-operations": "^2.2.1",
     "@graphql-codegen/typescript-react-apollo": "^3.2.2",
+    "deepmerge": "^4.2.2",
     "formik": "^2.2.9",
     "framer-motion": "^5.3.3",
     "next": "latest",

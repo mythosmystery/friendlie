@@ -23,14 +23,26 @@ export type Auth = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createProfile: Profile;
   googleSignIn?: Maybe<Auth>;
+  likeUser: Scalars['String'];
   login?: Maybe<Auth>;
   register: Auth;
 };
 
 
+export type MutationCreateProfileArgs = {
+  profileData: ProfileInput;
+};
+
+
 export type MutationGoogleSignInArgs = {
   tokenId: Scalars['String'];
+};
+
+
+export type MutationLikeUserArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -58,8 +70,18 @@ export type Profile = {
   user: User;
 };
 
+export type ProfileInput = {
+  age: Scalars['Float'];
+  bio: Scalars['String'];
+  gender: Scalars['String'];
+  interests: Array<Scalars['String']>;
+  intro: Scalars['String'];
+  picture: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
+  getProfiles: Array<Profile>;
   getUser: User;
   getUsers: Array<User>;
   hello: Scalars['String'];
@@ -78,10 +100,21 @@ export type User = {
   id: Scalars['ID'];
   likedBy?: Maybe<Array<User>>;
   likes?: Maybe<Array<User>>;
-  matches?: Maybe<Array<User>>;
   name: Scalars['String'];
   profile?: Maybe<Profile>;
 };
+
+export type AllUserIdsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllUserIdsQuery = { __typename?: 'Query', getUsers: Array<{ __typename?: 'User', id: string }> };
+
+export type GetUserByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type GetUserByIdQuery = { __typename?: 'Query', getUser: { __typename?: 'User', id: string, name: string, email: string } };
 
 export type GoogleSignInMutationVariables = Exact<{
   tokenId: Scalars['String'];
@@ -96,6 +129,77 @@ export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: string, name: string, email: string, googlePicture?: string | null | undefined } | null | undefined };
 
 
+export const AllUserIdsDocument = gql`
+    query allUserIds {
+  getUsers {
+    id
+  }
+}
+    `;
+
+/**
+ * __useAllUserIdsQuery__
+ *
+ * To run a query within a React component, call `useAllUserIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllUserIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllUserIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAllUserIdsQuery(baseOptions?: Apollo.QueryHookOptions<AllUserIdsQuery, AllUserIdsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AllUserIdsQuery, AllUserIdsQueryVariables>(AllUserIdsDocument, options);
+      }
+export function useAllUserIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllUserIdsQuery, AllUserIdsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AllUserIdsQuery, AllUserIdsQueryVariables>(AllUserIdsDocument, options);
+        }
+export type AllUserIdsQueryHookResult = ReturnType<typeof useAllUserIdsQuery>;
+export type AllUserIdsLazyQueryHookResult = ReturnType<typeof useAllUserIdsLazyQuery>;
+export type AllUserIdsQueryResult = Apollo.QueryResult<AllUserIdsQuery, AllUserIdsQueryVariables>;
+export const GetUserByIdDocument = gql`
+    query getUserById($id: String!) {
+  getUser(id: $id) {
+    id
+    name
+    email
+  }
+}
+    `;
+
+/**
+ * __useGetUserByIdQuery__
+ *
+ * To run a query within a React component, call `useGetUserByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetUserByIdQuery(baseOptions: Apollo.QueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
+      }
+export function useGetUserByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
+        }
+export type GetUserByIdQueryHookResult = ReturnType<typeof useGetUserByIdQuery>;
+export type GetUserByIdLazyQueryHookResult = ReturnType<typeof useGetUserByIdLazyQuery>;
+export type GetUserByIdQueryResult = Apollo.QueryResult<GetUserByIdQuery, GetUserByIdQueryVariables>;
 export const GoogleSignInDocument = gql`
     mutation GoogleSignIn($tokenId: String!) {
   googleSignIn(tokenId: $tokenId) {
